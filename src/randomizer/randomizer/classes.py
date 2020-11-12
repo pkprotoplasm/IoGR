@@ -695,6 +695,7 @@ class World:
 
         # Update graph in case bosses/entrances are shuffled
         self.check_exits()
+        self.initiate_graph_visualization()
 
     # Check entrances for unresolved shuffles
     def check_exits(self):
@@ -3589,4 +3590,3 @@ class World:
         }
 
         self.graph_viz = graphviz.Digraph()
-        self.initiate_graph_visualization()
