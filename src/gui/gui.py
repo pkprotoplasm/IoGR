@@ -145,9 +145,9 @@ def generate_ROM():
         if not race_mode_toggle.get():
             spoiler = randomizer.generate_spoiler()
             write_spoiler(spoiler, spoiler_filename, rompath)
-        if graph_viz_toggle.get():
-            graph_viz = randomizer.generate_graph_visualization()
-            write_graph_viz(graph_viz, graph_viz_filename, rompath)
+            if graph_viz_toggle.get():
+                graph_viz = randomizer.generate_graph_visualization()
+                write_graph_viz(graph_viz, graph_viz_filename, rompath)
 
         tkinter.messagebox.showinfo("Success!", rom_filename + " has been successfully created!")
     except OffsetError:

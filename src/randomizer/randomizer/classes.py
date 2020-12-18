@@ -1706,7 +1706,7 @@ class World:
                 #    graph.edge(node_name, accessible_node_name)
 
         for _, logic_data in self.logic.items():
-            needed_items = logic_data[2]
+            needed_items = logic_data[3]
             enough_items = True
             for item_id, quantity in needed_items:
                 existing_quantity = 0
