@@ -712,12 +712,12 @@ class Randomizer:
             patch.seek(int("39dd9", 16) + rom_offset)
             patch.write(b"\x02\x00\x8D\xB0\x0A\xD8\x4c\x7c\xfd")
 
-        # Fluteless - prepare subroutines
-        patch.seek(int("2f828", 16) + rom_offset)
-        patch.write(b"\xa9\x00\x00\xcd\xd4\x0a\xf0\x03\xa9\x00\x01\x60"     # disable blocking for Will, $2f828
-            + b"\xa9\x00\x04\x04\x10\xa9\x00\x02\x14\x10\x60"               # disable attack damage for Will, $2f834
-            + b"\xad\x44\x06\xc9\xc6\x00\xf0\x0a\xad\xae\x09\x89\x08\x00\xf0\x02\x02\xe0\x4c\xbd\xb7")  # allow charge in snake game, $2f83f
         if settings.fluteless:
+            # Fluteless - prepare subroutines
+            patch.seek(int("2f844", 16) + rom_offset)
+            patch.write(b"\xa9\x00\x00\xcd\xd4\x0a\xf0\x03\xa9\x00\x01\x60"     # disable blocking for Will, $2f828
+                + b"\xa9\x00\x04\x04\x10\xa9\x00\x02\x14\x10\x60"               # disable attack damage for Will, $2f834
+                + b"\xad\x44\x06\xc9\xc6\x00\xf0\x0a\xad\xae\x09\x89\x08\x00\xf0\x02\x02\xe0\x4c\xbd\xb7")  # allow charge in snake game, $2f83f
             # Statues in Underground Tunnel are breakable with Will abilities - NOT NECESSARY
             #patch.seek(int("a8837", 16) + rom_offset)
             #patch.write(b"\x01\x4c\x99\x88")
@@ -749,15 +749,15 @@ class Randomizer:
 
             # Disable blocking for Will
             patch.seek(int("2ca63", 16) + rom_offset)
-            patch.write(b"\x20\x28\xf8")
+            patch.write(b"\x20\x44\xf8")
 
             # Disable attack damage for Will
             patch.seek(int("2cefd", 16) + rom_offset)
-            patch.write(b"\xad\xd4\x0a\xf0\x09\xa9\x00\x01\x14\x10\x02\x06\x02\x60\x4c\x34\xf8")
+            patch.write(b"\xad\xd4\x0a\xf0\x09\xa9\x00\x01\x14\x10\x02\x06\x02\x60\x4c\x50\xf8")
 
             # Allow charging in snake game
             patch.seek(int("2b7b3", 16) + rom_offset)
-            patch.write(b"\x4c\x3f\xf8")
+            patch.write(b"\x4c\x5B\xf8")
 
             # Move Ankor Wat wall bugs down so they can be hit
             bug_strs = [b"\x5c\xbb\x8b",b"\x66\xbb\x8b"]
